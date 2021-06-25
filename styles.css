@@ -39,7 +39,7 @@ img {
     margin: 1% 45%;
 }
 
-.player1 {
+.player0, .player2 {
     background-color: blue;
 }
 
