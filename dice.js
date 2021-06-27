@@ -58,7 +58,7 @@ function playerPos() {
         document.getElementById("btn-roll").disabled = true;
         return document.getElementById('winner').textContent += 'Player 1 is the winner!';
         } 
-    if (player2 >= 30){
+    else if (player2 >= 30){
         document.getElementById("btn-roll").disabled = true;
         return document.getElementById('winner').textContent += 'Player 2 is the winner!';
         }
@@ -108,7 +108,7 @@ document.getElementById('btn-roll').addEventListener('click', function () {
 
         }
         //if player hits hole
-        if (holes.includes(playerPosition)) {
+        else if (holes.includes(playerPosition)) {
             playerPosition -= 3;
             document.getElementById('hitHole').textContent += 'Oh no! You get pulled into a black hole -3';
             setTimeout(function () {
