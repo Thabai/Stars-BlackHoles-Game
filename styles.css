@@ -1,22 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgb(175, 196, 189);
 }
+
+/* board*/
 .gridRow {
     display: flex;
     margin: auto;
-    border: 1px solid black;
     width: 90%;
     height: 140px;
+    background: rgb(159, 160, 168);
 }
+.gridRow:nth-child(1) {background-color: rgb(219, 243, 242);}
+.gridRow:nth-child(3) {background-color: rgb(224, 189, 189);}
 
 .cell {
-    height: 100%;
     width: calc(100%/30);
     border:2px solid black;
-    background: wheat;
 }
-
+.cell:nth-child(31n) {
+    background:rgb(234, 235, 227);
+    background-image: linear-gradient(45deg, #808080 25%, transparent 25%), 
+    linear-gradient(-45deg, #808080 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #808080 75%), 
+    linear-gradient(-45deg, transparent 75%, #808080 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+    
 .holes {
     background: url(images/hole.png),rgb(79, 77, 109);
     background-size: 50%;
@@ -26,19 +43,6 @@ body {
     background-size: 50%;
 }
 
-button {
-    width: 20%;
-    height: 20%;
-    color: black;
-    text-align: center;
-    margin: 1% 40%;
-}
-
-/* #button {
-    width: 20%;
-    height: 20%;
-} */
-
 img {
     height: 10%;
     width: 10%;
@@ -46,16 +50,22 @@ img {
     border-radius: 25%;
 }
 
+/*players */
 .player0, .player2 {
-    background-color: blue;
+    height: 50%;
+    border-radius: 30%;
+    margin: auto;
 }
 
+.player0{ background-color: darkblue;}
+.player2{ background-color: rgb(92, 3, 10);}
+
+/*text*/
 h1 {
     height: 50px;
     color: black;
     margin: 50px auto;
     text-align: center;
-    font-size: 24px;
 } 
 
 #hitStar, #hitHole, #winner {
@@ -63,5 +73,54 @@ h1 {
     color: black;
     margin: auto;
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
+}
+
+.rules-panel {
+    margin: auto;
+    text-align: center;
+    line-height: 30px;
+}
+
+button {
+    display: inherit;
+    color: black;
+    text-align: center;
+    margin: 10px auto;
+    border: 5px solid rgba(255,255,255,0);
+    border-radius: 2px;
+    font-family:'Roboto',sans-serif;
+    font-weight:bold;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    transition: all 0.2s;
+    font-size: 20px;
+    padding: 10px;
+}
+
+button:hover{
+    border-color: rgb(63, 92, 61);
+}
+        
+
+.restart, #btn-rules{
+    display: unset;
+    margin-left: 150px;
+}
+
+@media screen and (max-width:500px){
+    .gridRow {
+        height: 80px;
+    }
+    #hitStar, #hitHole, #winner {
+        height: 20px;
+        font-size: 20px;
+    }
+    button {
+        font-size: 15px;
+        padding: 2px;
+    }
+.restart, #btn-rules{
+    display: unset;
+    margin-left: 10px;
+}
 }

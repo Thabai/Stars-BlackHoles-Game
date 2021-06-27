@@ -10,12 +10,22 @@
 </head>
 <body>
     <h1>Stars & Blackholes</h1>
+    
     <div id='hitStar'></div>
     <div id='hitHole'></div>
     <div id="winner"></div>
+    <button class="restart">Restart Game</button>
+    <button id=btn-rules>Game Rules</button>
+    <div class="rules-panel" style="display:none">
+        <h3>Gameplay</h3>
+        <p>Each player takes turn rolling the dice until someone reaches the finish line</p>
+        <li>If a player hits a star, they will move +5 places</li>
+        <li>If a player hits a black hole, they will move -5 places</li>
+    <button class="btn-back">Back to game</button>	
+    </div>
     <div id="container">
     </div> <!----id=button--->
-    <button class="restart">Restart Game</button>
+    
     <button id="btn-roll">Roll Dice</button>
     <img class="dice" src="images/dice6.png" alt="">
     <script src="dice.js"></script>

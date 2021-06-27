@@ -138,40 +138,23 @@ document.querySelector('.restart').addEventListener('click', function () {
 
 
 
+//rules tab
+document.getElementById('btn-rules').addEventListener('click', function(){
+	    
+	    document.querySelector('.btn-back').style.display = 'inherit';
+		let rules = document.getElementsByClassName('rules-panel');
+		for(i=0;i<rules.length;i++){
+			rules[i].style.display = 'inherit';
+		}
+	
+});
 
-
-
-
-
-
-
-// // //rules tab
-// // document.querySelector('.btn-new').addEventListener('click', init);
-
-// // document.querySelector('.btn-rules').addEventListener('click', function(){
-// // 	    let games = document.getElementsByClassName('game-panel');
-// // 		for(i=0;i<games.length;i++){
-// // 			games[i].style.display = 'none';
-// // 		}
-
-// // 	    document.querySelector('.btn-back').style.display = 'block';
-// // 		let rules = document.getElementsByClassName('rules-panel');
-// // 		for(i=0;i<rules.length;i++){
-// // 			rules[i].style.display = 'block';
-// // 		}
-
-// // });
-
-// // document.querySelector('.btn-back').addEventListener('click', function(){
-// // 	    let games = document.getElementsByClassName('game-panel');
-// // 		for(i=0;i<games.length;i++){
-// // 			games[i].style.display = 'block';
-// // 		}
-
-// // 	    document.querySelector('.btn-back').style.display = 'none';
-// // 		let rules = document.getElementsByClassName('rules-panel');
-// // 		for(i=0;i<rules.length;i++){
-// // 			rules[i].style.display = 'none';
-// // 		}
-
-// // });
+document.querySelector('.btn-back').addEventListener('click', function(){
+	    
+	    document.querySelector('.btn-back').style.display = 'none';
+		let rules = document.getElementsByClassName('rules-panel');
+		for(i=0;i<rules.length;i++){
+			rules[i].style.display = 'none';
+		}
+	
+});
