@@ -47,28 +47,34 @@ function createMap() {
 }
 createMap();
 
-let player0 = 0;
+let player1 = 0;
 let player2 = 0;
 let activePlayer = 0;
 
 
 function playerPos() {
-    if (player0 >= 30 || player2 >= 30)
-    {
-        return;
-    }
-    let player0Position = document.getElementById('0-' + player0);
-    player0Position.classList.add('player0');
+    // stop game if 30 or more
+    if (player1 >= 30){
+        document.getElementById("btn-roll").disabled = true;
+        return document.getElementById('winner').textContent += 'Player 1 is the winner!';
+        } 
+    if (player2 >= 30){
+        document.getElementById("btn-roll").disabled = true;
+        return document.getElementById('winner').textContent += 'Player 2 is the winner!';
+        }
+    else {
+    let player1Position = document.getElementById('0-' + player1);
+    player1Position.classList.add('player0');
     let player2Position = document.getElementById('2-' + player2);
     player2Position.classList.add('player2');
-
+    }
 }
 
 playerPos()
 
-document.querySelector('.btn-roll').addEventListener('click', function () {
-
-    let playerPosition = activePlayer === 0 ? player0 : player2;
+document.getElementById('btn-roll').addEventListener('click', function () {
+    
+    let playerPosition = activePlayer === 0 ? player1 : player2;
     let lastPlayerPosition = document.getElementById(activePlayer + '-' + playerPosition);
     lastPlayerPosition.classList.remove('player' + activePlayer);
     // 1. random number
@@ -81,17 +87,18 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     //update position
     playerPosition += dice;
     if (activePlayer === 0) {
-        player0 = playerPosition;
+        player1 = playerPosition;
     } else {
         player2 = playerPosition;
     }
     playerPos();
+    document.getElementById('btn-roll').disabled = true;
     
     // delay for rules & popups
     setTimeout(function () {
         let lastPlayerPosition = document.getElementById(activePlayer + '-' + playerPosition);
         lastPlayerPosition.classList.remove('player' + activePlayer);
-
+        //if player hits star
         if (stars.includes(playerPosition)) {
             playerPosition += 5;
             document.getElementById('hitStar').textContent += 'You ride on a star +5';
@@ -100,6 +107,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
             }, 1500);
 
         }
+        //if player hits hole
         if (holes.includes(playerPosition)) {
             playerPosition -= 3;
             document.getElementById('hitHole').textContent += 'Oh no! You get pulled into a black hole -3';
@@ -108,23 +116,20 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
             }, 1500);
 
         }
-        if (playerPosition >= 30) {
-            document.getElementById('winner').textContent += 'Winner!';
-        }
-        
+        //new pos if hits star or hole
         if (activePlayer === 0) {
-            player0 = playerPosition;
+            player1 = playerPosition;
         } else {
             player2 = playerPosition;
         }
         playerPos()
         nextPlayer()
+        document.getElementById('btn-roll').disabled = false;
     }, 1000);
-
 });
 
 function nextPlayer () {
-    activePlayer ===0 ? activePlayer = 2 : activePlayer = 0;
+    activePlayer ===0 ? activePlayer = 2 : activePlayer = 0; 
 }
 
 document.querySelector('.restart').addEventListener('click', function () {
