@@ -58,7 +58,7 @@ function playerPos() {
         document.getElementById("btn-roll").disabled = true;
         return document.getElementById('winner').textContent += 'Player 1 is the winner!';
         } 
-    else if (player2 >= 30){
+    if (player2 >= 30){
         document.getElementById("btn-roll").disabled = true;
         return document.getElementById('winner').textContent += 'Player 2 is the winner!';
         }
