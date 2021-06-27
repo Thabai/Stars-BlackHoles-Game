@@ -54,26 +54,24 @@ let activePlayer = 0;
 
 function playerPos() {
     // stop game if 30 or more
-    if (player1 >= 30){
-        document.getElementById("btn-roll").disabled = true;
-        return document.getElementById('winner').textContent += 'Player 1 is the winner!';
-        } 
-    if (player2 >= 30){
-        document.getElementById("btn-roll").disabled = true;
-        return document.getElementById('winner').textContent += 'Player 2 is the winner!';
-        }
-    else {
-    let player1Position = document.getElementById('0-' + player1);
-    player1Position.classList.add('player0');
-    let player2Position = document.getElementById('2-' + player2);
-    player2Position.classList.add('player2');
+    if (player1 >= 30) {
+        document.getElementById("btn-roll").style.display = 'none';
+        return document.getElementById('winner').textContent = 'Player 1 is the winner!';
+    } else if (player2 >= 30) {
+        document.getElementById("btn-roll").style.display = 'none';
+        return document.getElementById('winner').textContent = 'Player 2 is the winner!';
+    } else {
+        let player1Position = document.getElementById('0-' + player1);
+        player1Position.classList.add('player0');
+        let player2Position = document.getElementById('2-' + player2);
+        player2Position.classList.add('player2');
     }
 }
 
 playerPos()
 
 document.getElementById('btn-roll').addEventListener('click', function () {
-    
+
     let playerPosition = activePlayer === 0 ? player1 : player2;
     let lastPlayerPosition = document.getElementById(activePlayer + '-' + playerPosition);
     lastPlayerPosition.classList.remove('player' + activePlayer);
@@ -93,7 +91,7 @@ document.getElementById('btn-roll').addEventListener('click', function () {
     }
     playerPos();
     document.getElementById('btn-roll').disabled = true;
-    
+
     // delay for rules & popups
     setTimeout(function () {
         let lastPlayerPosition = document.getElementById(activePlayer + '-' + playerPosition);
@@ -101,7 +99,7 @@ document.getElementById('btn-roll').addEventListener('click', function () {
         //if player hits star
         if (stars.includes(playerPosition)) {
             playerPosition += 5;
-            document.getElementById('hitStar').textContent += 'You ride on a star +5';
+            document.getElementById('hitStar').textContent = 'You ride on a star +5';
             setTimeout(function () {
                 document.getElementById('hitStar').textContent = '';
             }, 1500);
@@ -110,7 +108,7 @@ document.getElementById('btn-roll').addEventListener('click', function () {
         //if player hits hole
         else if (holes.includes(playerPosition)) {
             playerPosition -= 3;
-            document.getElementById('hitHole').textContent += 'Oh no! You get pulled into a black hole -3';
+            document.getElementById('hitHole').textContent = 'Oh no! You get pulled into a black hole -3';
             setTimeout(function () {
                 document.getElementById('hitHole').textContent = '';
             }, 1500);
@@ -128,10 +126,11 @@ document.getElementById('btn-roll').addEventListener('click', function () {
     }, 1000);
 });
 
-function nextPlayer () {
-    activePlayer ===0 ? activePlayer = 2 : activePlayer = 0; 
+function nextPlayer() {
+    activePlayer === 0 ? activePlayer = 2 : activePlayer = 0;
 }
 
+//refresh page
 document.querySelector('.restart').addEventListener('click', function () {
     document.location.href = "";
 })
@@ -139,22 +138,22 @@ document.querySelector('.restart').addEventListener('click', function () {
 
 
 //rules tab
-document.getElementById('btn-rules').addEventListener('click', function(){
-	    
-	    document.querySelector('.btn-back').style.display = 'inherit';
-		let rules = document.getElementsByClassName('rules-panel');
-		for(i=0;i<rules.length;i++){
-			rules[i].style.display = 'inherit';
-		}
-	
+document.getElementById('btn-rules').addEventListener('click', function () {
+
+    document.querySelector('.btn-back').style.display = 'inherit';
+    let rules = document.getElementsByClassName('rules-panel');
+    for (i = 0; i < rules.length; i++) {
+        rules[i].style.display = 'inherit';
+    }
+
 });
 
-document.querySelector('.btn-back').addEventListener('click', function(){
-	    
-	    document.querySelector('.btn-back').style.display = 'none';
-		let rules = document.getElementsByClassName('rules-panel');
-		for(i=0;i<rules.length;i++){
-			rules[i].style.display = 'none';
-		}
-	
+document.querySelector('.btn-back').addEventListener('click', function () {
+
+    document.querySelector('.btn-back').style.display = 'none';
+    let rules = document.getElementsByClassName('rules-panel');
+    for (i = 0; i < rules.length; i++) {
+        rules[i].style.display = 'none';
+    }
+
 });
